@@ -1,5 +1,8 @@
+# Go Service Template
 
-gRPC Echo with TLS (Self-signed)
+Basic setup for service prototyping in Alchera Inc.
+
+* gRPC Echo with TLS (Self-signed)
 
 ### References
 
@@ -11,6 +14,8 @@ gRPC Echo with TLS (Self-signed)
 ## How To
 
 ### Setup
+
+See [.travis.yml](./.travis.yml) for entire steps.
 
 #### Go Path
 
@@ -33,4 +38,19 @@ go get google.golang.org/grpc
 ```bash
 go get github.com/golang/protobuf/proto
 go get github.com/golang/protobuf/protoc-gen-go
+```
+
+#### Key/Cert Generation
+
+The following scripts requires `openssl` tool.
+
+```
+bash ./scripts/openssl_key_gen.sh;
+bash ./scripts/openssl_cert_selfsign.sh;
+```
+
+### Test
+
+```
+go test -cover -v .
 ```
