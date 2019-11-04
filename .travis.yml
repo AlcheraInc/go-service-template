@@ -17,6 +17,11 @@ before_install:
   - export GOPATH=${TRAVIS_BUILD_DIR}
   - go env
 install:
+  # protobuf compiler install
+  - if [ ${TRAVIS_OS_NAME} == "linux" ]; then
+    bash ./scripts/install_protoc.sh;
+    fi
+  # required go packages
   - go get google.golang.org/grpc
   - go get github.com/golang/protobuf/proto
   - go get github.com/golang/protobuf/protoc-gen-go
@@ -26,6 +31,9 @@ before_script:
   - if [ ${TRAVIS_OS_NAME} == "linux" ]; then
     bash ./scripts/openssl_key_gen.sh;
     bash ./scripts/openssl_cert_selfsign.sh;
+    fi
+  # codegen for gRPC / ProtoBuf 
+  - if [ ${TRAVIS_OS_NAME} == "linux" ]; then
     bash ./scripts/run_protoc.sh;
     fi
 script:
