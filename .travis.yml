@@ -1,0 +1,32 @@
+
+git:
+  submodules: true
+
+notifications:
+  email:
+    - dh.park@alcherainc.com
+
+language: go
+go:
+  - "1.10"
+  - "1.11"
+  - "1.12"
+
+before_install:
+  - go version
+  - export GOPATH=${TRAVIS_BUILD_DIR}
+  - go env
+install:
+  - go get google.golang.org/grpc
+  - go get github.com/golang/protobuf/proto
+  - go get github.com/golang/protobuf/protoc-gen-go
+
+before_script:
+  # generate a temporary key and certificate
+  - if [ ${TRAVIS_OS_NAME} == "linux" ]; then
+    bash ./scripts/openssl_key_gen.sh;
+    bash ./scripts/openssl_cert_selfsign.sh;
+    bash ./scripts/run_protoc.sh;
+    fi
+script:
+  - go test -cover -v .

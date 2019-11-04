@@ -42,8 +42,8 @@ func TestMain(m *testing.M) {
 	log.Println(workspace)
 
 	hostname := "localhost"
-	keypath := filepath.Join(workspace, "scp227.key")
-	certpath := filepath.Join(workspace, "localhost.crt")
+	keypath := filepath.Join(workspace, "server.key")
+	certpath := filepath.Join(workspace, "server.crt")
 
 	if err = os.Setenv("KEY_PATH", keypath); err != nil {
 		log.Fatalln(err)

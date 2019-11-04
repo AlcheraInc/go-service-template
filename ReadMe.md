@@ -24,7 +24,7 @@ export GOPATH=$(pwd)
 
 #### gRPC
 
-````
+```
 go get google.golang.org/grpc
 ```
 
