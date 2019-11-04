@@ -1,5 +1,7 @@
 # Go Service Template
 
+[![Build Status](https://travis-ci.com/AlcheraInc/go-service-template.svg?branch=master)](https://travis-ci.com/AlcheraInc/go-service-template)
+
 Basic setup for service prototyping in Alchera Inc.
 
 * gRPC Echo with TLS (Self-signed)
