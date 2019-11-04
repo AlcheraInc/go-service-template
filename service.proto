@@ -1,0 +1,23 @@
+//
+//  See Also
+//    https://developers.google.com/protocol-buffers/docs/proto3
+//    scripts/run_protoc.sh
+//
+syntax = "proto3";
+
+package echo.v1;
+
+message Request {
+  bytes chunk = 1;
+}
+
+message Response {
+  bytes chunk = 1;
+}
+  
+service Echo {
+  rpc Serve1(Request) returns (Response) {}
+  rpc Serve2(stream Request) returns (Response) {}
+  rpc Serve3(Request) returns (stream Response) {}
+  rpc Serve4(stream Request) returns (stream Response) {}
+}
