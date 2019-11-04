@@ -19,7 +19,7 @@ before_install:
 install:
   # protobuf compiler install
   - if [ ${TRAVIS_OS_NAME} == "linux" ]; then
-    bash ./scripts/install_protoc.sh;
+    sudo bash ./scripts/install_protoc.sh;
     fi
   # required go packages
   - go get google.golang.org/grpc
